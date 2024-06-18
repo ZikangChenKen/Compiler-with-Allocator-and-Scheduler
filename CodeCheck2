@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# This script performs Code Check 2 for lab1 in Comp 412 (Fall 2016)
+#
+# usage: CodeCheck2 path
+#
+# where path is the linux path to the allocator being checked
+#
+DIR=$(pwd)
+RUNALL=/clear/courses/comp412/students/lab2/code_check_2/CC2Helper
+#RUNALL=./CC2Helper
+CHECK=/clear/courses/comp412/students/lab2/code_check_2/CheckResults
+#CHECK=./CheckResults
+LOG1=~/CC2a.log
+LOG2=~/CC2b.log
+ALLOC=${1:-"<no-allocator-specified>"}
+#
+echo "Allocating and Testing ILOC Files"
+echo "in $DIR"
+echo " "
+echo "Using allocator = $ALLOC"
+echo "for k = 7"
+echo " "
+$RUNALL $ALLOC 7 >$LOG1
+$CHECK $LOG1
+echo " " 
+echo "for k = 5"
+echo " "
+#
+$RUNALL $ALLOC 5 >$LOG2
+$CHECK $LOG2
+echo " "
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# This script performs the first code check for COMP 412 Lab 1.
+# It takes a single command-line parameter, the name of the 
+# allocator to be checked.
+#
+# usage: CodeCheck1 alloc
+#
+# where alloc is the pathname of the allocator to test
+#
+DIR=$(pwd)
+DATE=$(date)
+HOSTNAME=$(hostname)
+HELPER=/clear/courses/comp412/students/lab2/code_check_1/CodeCheckHelper
+LOG=~/CodeCheck1.log
+ALLOC=${1:-./412alloc}
+NREGS=5
+#
+echo " "
+echo "Running COMP 412, Lab 1 Code Check #1"
+echo "in $DIR"
+echo "on $HOSTNAME / $DATE"
+echo " "
+echo "Invoked on allocator $ALLOC"
+echo " "
+$HELPER /clear/courses/comp412/students/lab2/code_check_1/cc1.i $ALLOC
+$HELPER /clear/courses/comp412/students/lab2/code_check_1/cc2.i $ALLOC
+$HELPER /clear/courses/comp412/students/lab2/code_check_1/cc3.i $ALLOC
+$HELPER /clear/courses/comp412/students/lab2/code_check_1/cc4.i $ALLOC
+$HELPER /clear/courses/comp412/students/lab2/code_check_1/cc5.i $ALLOC
+rm ~/CodeCheck1.log ~/CodeCheck1.i
